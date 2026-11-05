@@ -1,0 +1,298 @@
+{
+  "generated_at_utc": "2026-11-05T11:55:09.934685+00:00",
+  "target": "DuckDB local; BigQuery execution NOT verified",
+  "source_rows": {
+    "orders": 99441,
+    "items": 112650,
+    "customers": 99441,
+    "sellers": 3095,
+    "products": 32951,
+    "payments": 103886,
+    "reviews": 99224,
+    "categories": 71
+  },
+  "sha256": {
+    "orders": "8df58ef3d2d7e9944010f7beecd9b75367f5588ec6e3c91cec19ae3345ef9ecf",
+    "items": "0bc4d068c4fe38cbb01bd90e8746e3c613fe7b4baef75fab7b0e329701c3e279",
+    "customers": "983a422239e1712ded753b3bf9ecf47dc73f144d306029dcfa99e70a226883d2",
+    "sellers": "1f643d2b950373b85735e7794b20986f528d7a000432e7c6f9bcbb44d0846a0e",
+    "products": "3e6569628a17fbc75fd206ee357b59e20364b9afa90f5b6cd5b4d624c58aa9cc",
+    "payments": "4f713964f2815dbbaa40b9488268c55aac3627bfce5aa96cf58d1f3616de3cc0",
+    "reviews": "591b60e7a804e110dff3c4da6e23753bb96f8345a2d5c7476f8b75ddca514db8",
+    "categories": "a81f0d1f27b27e7293f761bc79e3ce8f348ee39c4b3ed3e49bde38f478586278"
+  },
+  "orders": 99441,
+  "items": 112650,
+  "ordered_merchandise_brl": "13591643.70",
+  "payments_brl": "16008872.12",
+  "legacy_timestamp_late_deliveries": 7827,
+  "observed_deliveries": 96476,
+  "late_deliveries": 6535,
+  "on_time_deliveries": 89941,
+  "on_time_rate": 0.9322629462249679,
+  "high_freight_items": 24434,
+  "independent_reconciliations_passed": 7,
+  "dbt_status_counts": {
+    "success": 17,
+    "pass": 48
+  },
+  "delivery_mart": [
+    {
+      "band": "1_3_days_late",
+      "orders": 1870,
+      "avg_order_review_score": 3.291036717062635,
+      "avg_delivery_days": 23.27807486631016
+    },
+    {
+      "band": "4_7_days_late",
+      "orders": 1802,
+      "avg_order_review_score": 2.105549199084668,
+      "avg_delivery_days": 28.184794672586015
+    },
+    {
+      "band": "8_plus_days_late",
+      "orders": 2863,
+      "avg_order_review_score": 1.698058950395399,
+      "avg_delivery_days": 44.45756199790429
+    },
+    {
+      "band": "not_observed",
+      "orders": 2965,
+      "avg_order_review_score": 1.753253605346465,
+      "avg_delivery_days": null
+    },
+    {
+      "band": "on_time",
+      "orders": 89941,
+      "avg_order_review_score": 4.290449944846913,
+      "avg_delivery_days": 10.941528335241992
+    }
+  ],
+  "monthly_revenue": [
+    {
+      "month": "2016-09-01",
+      "orders": 4,
+      "delivered_orders": 1,
+      "ordered_merchandise": "267.36",
+      "delivered_merchandise": "134.97",
+      "freight": "87.39",
+      "payments": "252.24"
+    },
+    {
+      "month": "2016-10-01",
+      "orders": 324,
+      "delivered_orders": 265,
+      "ordered_merchandise": "49507.66",
+      "delivered_merchandise": "40325.11",
+      "freight": "7301.18",
+      "payments": "59090.48"
+    },
+    {
+      "month": "2016-12-01",
+      "orders": 1,
+      "delivered_orders": 1,
+      "ordered_merchandise": "10.90",
+      "delivered_merchandise": "10.90",
+      "freight": "8.72",
+      "payments": "19.62"
+    },
+    {
+      "month": "2017-01-01",
+      "orders": 800,
+      "delivered_orders": 750,
+      "ordered_merchandise": "120312.87",
+      "delivered_merchandise": "111798.36",
+      "freight": "16875.62",
+      "payments": "138488.04"
+    },
+    {
+      "month": "2017-02-01",
+      "orders": 1780,
+      "delivered_orders": 1653,
+      "ordered_merchandise": "247303.02",
+      "delivered_merchandise": "234223.40",
+      "freight": "38977.60",
+      "payments": "291908.01"
+    },
+    {
+      "month": "2017-03-01",
+      "orders": 2682,
+      "delivered_orders": 2546,
+      "ordered_merchandise": "374344.30",
+      "delivered_merchandise": "359198.85",
+      "freight": "57704.29",
+      "payments": "449863.60"
+    },
+    {
+      "month": "2017-04-01",
+      "orders": 2404,
+      "delivered_orders": 2303,
+      "ordered_merchandise": "359927.23",
+      "delivered_merchandise": "340669.68",
+      "freight": "52495.01",
+      "payments": "417788.03"
+    },
+    {
+      "month": "2017-05-01",
+      "orders": 3700,
+      "delivered_orders": 3546,
+      "ordered_merchandise": "506071.14",
+      "delivered_merchandise": "489338.25",
+      "freight": "80119.81",
+      "payments": "592918.82"
+    },
+    {
+      "month": "2017-06-01",
+      "orders": 3245,
+      "delivered_orders": 3135,
+      "ordered_merchandise": "433038.60",
+      "delivered_merchandise": "421923.37",
+      "freight": "69924.44",
+      "payments": "511276.38"
+    },
+    {
+      "month": "2017-07-01",
+      "orders": 4026,
+      "delivered_orders": 3872,
+      "ordered_merchandise": "498031.48",
+      "delivered_merchandise": "481604.52",
+      "freight": "86940.14",
+      "payments": "592382.92"
+    },
+    {
+      "month": "2017-08-01",
+      "orders": 4331,
+      "delivered_orders": 4193,
+      "ordered_merchandise": "573971.68",
+      "delivered_merchandise": "554699.70",
+      "freight": "94232.92",
+      "payments": "674396.32"
+    },
+    {
+      "month": "2017-09-01",
+      "orders": 4285,
+      "delivered_orders": 4150,
+      "ordered_merchandise": "624401.69",
+      "delivered_merchandise": "607399.67",
+      "freight": "95997.22",
+      "payments": "727762.45"
+    },
+    {
+      "month": "2017-10-01",
+      "orders": 4631,
+      "delivered_orders": 4478,
+      "ordered_merchandise": "664219.43",
+      "delivered_merchandise": "648247.65",
+      "freight": "105092.94",
+      "payments": "779677.88"
+    },
+    {
+      "month": "2017-11-01",
+      "orders": 7544,
+      "delivered_orders": 7289,
+      "ordered_merchandise": "1010271.37",
+      "delivered_merchandise": "987765.37",
+      "freight": "168872.40",
+      "payments": "1194882.80"
+    },
+    {
+      "month": "2017-12-01",
+      "orders": 5673,
+      "delivered_orders": 5513,
+      "ordered_merchandise": "743914.17",
+      "delivered_merchandise": "726033.19",
+      "freight": "119633.06",
+      "payments": "878401.48"
+    },
+    {
+      "month": "2018-01-01",
+      "orders": 7269,
+      "delivered_orders": 7069,
+      "ordered_merchandise": "950030.36",
+      "delivered_merchandise": "924645.00",
+      "freight": "157271.53",
+      "payments": "1115004.18"
+    },
+    {
+      "month": "2018-02-01",
+      "orders": 6728,
+      "delivered_orders": 6555,
+      "ordered_merchandise": "844178.71",
+      "delivered_merchandise": "826437.13",
+      "freight": "142730.25",
+      "payments": "992463.34"
+    },
+    {
+      "month": "2018-03-01",
+      "orders": 7211,
+      "delivered_orders": 7003,
+      "ordered_merchandise": "983213.44",
+      "delivered_merchandise": "953356.25",
+      "freight": "171913.38",
+      "payments": "1159652.12"
+    },
+    {
+      "month": "2018-04-01",
+      "orders": 6939,
+      "delivered_orders": 6798,
+      "ordered_merchandise": "996647.75",
+      "delivered_merchandise": "973534.09",
+      "freight": "163050.29",
+      "payments": "1160785.48"
+    },
+    {
+      "month": "2018-05-01",
+      "orders": 6873,
+      "delivered_orders": 6749,
+      "ordered_merchandise": "996517.68",
+      "delivered_merchandise": "977544.69",
+      "freight": "153264.14",
+      "payments": "1153982.15"
+    },
+    {
+      "month": "2018-06-01",
+      "orders": 6167,
+      "delivered_orders": 6099,
+      "ordered_merchandise": "865124.31",
+      "delivered_merchandise": "856077.86",
+      "freight": "157552.80",
+      "payments": "1023880.50"
+    },
+    {
+      "month": "2018-07-01",
+      "orders": 6292,
+      "delivered_orders": 6159,
+      "ordered_merchandise": "895507.22",
+      "delivered_merchandise": "867953.46",
+      "freight": "163220.81",
+      "payments": "1066540.75"
+    },
+    {
+      "month": "2018-08-01",
+      "orders": 6512,
+      "delivered_orders": 6351,
+      "ordered_merchandise": "854686.33",
+      "delivered_merchandise": "838576.64",
+      "freight": "148622.14",
+      "payments": "1022425.32"
+    },
+    {
+      "month": "2018-09-01",
+      "orders": 16,
+      "delivered_orders": 0,
+      "ordered_merchandise": "145.00",
+      "delivered_merchandise": "0.00",
+      "freight": "21.46",
+      "payments": "4439.54"
+    },
+    {
+      "month": "2018-10-01",
+      "orders": 4,
+      "delivered_orders": 0,
+      "ordered_merchandise": "0.00",
+      "delivered_merchandise": "0.00",
+      "freight": "0.00",
+      "payments": "589.67"
+    }
+  ]
+}

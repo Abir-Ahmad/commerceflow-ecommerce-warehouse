@@ -1,0 +1,9 @@
+{
+  "mode": "Airflow 2.10.5 dag.test(); local serial execution; no scheduler deployed",
+  "state": "success",
+  "tasks": {
+    "load_raw": "success",
+    "dbt_build": "success",
+    "reconcile": "success"
+  }
+}

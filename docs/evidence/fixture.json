@@ -1,0 +1,85 @@
+{
+  "generated_at_utc": "2026-11-05T11:55:48.741720+00:00",
+  "target": "DuckDB local; BigQuery execution NOT verified",
+  "source_rows": {
+    "orders": 4,
+    "items": 4,
+    "customers": 4,
+    "sellers": 1,
+    "products": 3,
+    "payments": 4,
+    "reviews": 4,
+    "categories": 1
+  },
+  "sha256": {
+    "orders": "6697525d81cdcd64f37ae7eb6e114cc0076c00d776ecfe90b94ad436fbaff657",
+    "items": "489fa9515ff70ad6855098e9b23d8133a6cf834f4708b54fea43c94774d9d3c9",
+    "customers": "bf2ae8c27f758c469a8a88e661b7b0e97a53b9ade77d07bb83b0910f42b2c3c9",
+    "sellers": "8807b82def15bac7b3444237cc28022cd28d74d3666674ca6e70e99e496d59e0",
+    "products": "1848193732489ee16c80e103372ac4b5985c1f7918193db971a401866f86981a",
+    "payments": "5b9c1c47a19e2b33b543a24b219046e8703b517cd0ddd342178a69de8b39a5f3",
+    "reviews": "a5a03f5239edf1b915124894a3eec74d918edf1a127078b0153f0b6765ea8928",
+    "categories": "d19a92ae19fefe0380d09a4e3e6e23b463b0a1b3c60713baa6553038f80a420e"
+  },
+  "orders": 4,
+  "items": 4,
+  "ordered_merchandise_brl": "200",
+  "payments_brl": "245",
+  "legacy_timestamp_late_deliveries": 3,
+  "observed_deliveries": 3,
+  "late_deliveries": 2,
+  "on_time_deliveries": 1,
+  "on_time_rate": 0.3333333333333333,
+  "high_freight_items": 1,
+  "independent_reconciliations_passed": 7,
+  "dbt_status_counts": {
+    "success": 17,
+    "pass": 48
+  },
+  "delivery_mart": [
+    {
+      "band": "1_3_days_late",
+      "orders": 1,
+      "avg_order_review_score": 2.0,
+      "avg_delivery_days": 4.0
+    },
+    {
+      "band": "8_plus_days_late",
+      "orders": 1,
+      "avg_order_review_score": 1.0,
+      "avg_delivery_days": 13.0
+    },
+    {
+      "band": "not_observed",
+      "orders": 1,
+      "avg_order_review_score": null,
+      "avg_delivery_days": null
+    },
+    {
+      "band": "on_time",
+      "orders": 1,
+      "avg_order_review_score": 4.0,
+      "avg_delivery_days": 2.0
+    }
+  ],
+  "monthly_revenue": [
+    {
+      "month": "2018-01-01",
+      "orders": 2,
+      "delivered_orders": 2,
+      "ordered_merchandise": "170.00",
+      "delivered_merchandise": "170.00",
+      "freight": "40.00",
+      "payments": "210.00"
+    },
+    {
+      "month": "2018-02-01",
+      "orders": 2,
+      "delivered_orders": 1,
+      "ordered_merchandise": "30.00",
+      "delivered_merchandise": "30.00",
+      "freight": "5.00",
+      "payments": "35.00"
+    }
+  ]
+}

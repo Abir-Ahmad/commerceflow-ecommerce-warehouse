@@ -1,0 +1,169 @@
+version: 2
+models:
+- name: stg_orders
+  description: One row per source order.
+  columns:
+  - name: order_id
+    tests:
+    - unique
+    - not_null
+  - name: order_status
+    tests:
+    - accepted_values:
+        values:
+        - delivered
+        - shipped
+        - canceled
+        - unavailable
+        - invoiced
+        - processing
+        - created
+        - approved
+- name: dim_customers
+  description: One row per customer_id. Natural source keys; static snapshot, no SCD
+    history.
+  columns:
+  - name: customer_id
+    tests:
+    - unique
+    - not_null
+- name: dim_sellers
+  description: One row per seller_id. Natural source keys; static snapshot, no SCD
+    history.
+  columns:
+  - name: seller_id
+    tests:
+    - unique
+    - not_null
+- name: dim_products
+  description: One row per product_id. Natural source keys; static snapshot, no SCD
+    history.
+  columns:
+  - name: product_id
+    tests:
+    - unique
+    - not_null
+- name: stg_categories
+  description: One row per translated category.
+  columns:
+  - name: category_name
+    tests:
+    - unique
+    - not_null
+- name: stg_reviews
+  description: One row per review record; multiple reviews per order retained and
+    averaged.
+  columns:
+  - name: order_id
+    tests:
+    - not_null
+    - relationships:
+        to: ref('stg_orders')
+        field: order_id
+  - name: review_score
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        quote: false
+- name: stg_payments
+  description: One row per order/payment sequence.
+  columns:
+  - name: order_id
+    tests:
+    - not_null
+    - relationships:
+        to: ref('stg_orders')
+        field: order_id
+  - name: payment_value
+    tests:
+    - not_null
+- name: fct_order_items
+  description: One row per (order_id, order_item_id). BRL amounts, no currency conversion.
+  columns:
+  - name: order_id
+    tests:
+    - not_null
+    - relationships:
+        to: ref('fct_orders')
+        field: order_id
+  - name: order_item_id
+    tests:
+    - not_null
+  - name: product_id
+    tests:
+    - not_null
+    - relationships:
+        to: ref('dim_products')
+        field: product_id
+  - name: seller_id
+    tests:
+    - not_null
+    - relationships:
+        to: ref('dim_sellers')
+        field: seller_id
+  - name: price
+    tests:
+    - not_null
+  - name: freight_value
+    tests:
+    - not_null
+- name: fct_orders
+  description: One row per order, including cancellations and orders without items.
+    Child tables aggregated before joins.
+  columns:
+  - name: order_id
+    tests:
+    - unique
+    - not_null
+  - name: customer_id
+    tests:
+    - not_null
+    - relationships:
+        to: ref('dim_customers')
+        field: customer_id
+  - name: purchased_at
+    tests:
+    - not_null
+  - name: delivery_band
+    tests:
+    - accepted_values:
+        values:
+        - not_observed
+        - on_time
+        - 1_3_days_late
+        - 4_7_days_late
+        - 8_plus_days_late
+- name: mart_monthly_revenue
+  description: Reporting aggregation; see docs/architecture.md for grain and definitions.
+  columns:
+  - name: purchase_month
+    tests:
+    - unique
+    - not_null
+- name: mart_delivery
+  description: Reporting aggregation; see docs/architecture.md for grain and definitions.
+  columns:
+  - name: delivery_band
+    tests:
+    - unique
+    - not_null
+- name: mart_fulfilment
+  description: Reporting aggregation; see docs/architecture.md for grain and definitions.
+  columns:
+  - name: order_status
+    tests:
+    - unique
+    - not_null
+- name: mart_category_freight
+  description: Reporting aggregation; see docs/architecture.md for grain and definitions.
+  columns:
+  - name: category_english
+    tests:
+    - unique
+    - not_null

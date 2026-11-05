@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+credentials*.json
+*service-account*.json
+data/
+target/
+logs/
+.dbt/
+*.duckdb*
+*.db
+*.pbix
+*.zip
+.airflow-venv/
+.airflow/

@@ -1,0 +1,1 @@
+TABLES = {'orders': 'olist_orders_dataset', 'items': 'olist_order_items_dataset', 'customers': 'olist_customers_dataset', 'sellers': 'olist_sellers_dataset', 'products': 'olist_products_dataset', 'payments': 'olist_order_payments_dataset', 'reviews': 'olist_order_reviews_dataset', 'categories': 'product_category_name_translation'}

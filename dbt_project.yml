@@ -1,0 +1,16 @@
+name: commerceflow
+version: '1.0.0'
+config-version: 2
+profile: commerceflow
+model-paths: [models]
+test-paths: [tests]
+macro-paths: [macros]
+clean-targets: [target, logs]
+models:
+  commerceflow:
+    staging:
+      +materialized: view
+    warehouse:
+      +materialized: table
+    marts:
+      +materialized: table

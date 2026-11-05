@@ -1,0 +1,7 @@
+{
+  "test": "unique_item_key",
+  "injected_fault": "duplicate one fact item",
+  "expected_dbt_test_status": "fail",
+  "observed_dbt_test_status": "fail",
+  "restored": true
+}

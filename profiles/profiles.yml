@@ -1,0 +1,18 @@
+commerceflow:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('COMMERCEFLOW_DB', 'data/commerceflow.duckdb') }}"
+      schema: analytics
+      threads: 2
+    bigquery:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('GCP_PROJECT', 'cloud-not-configured') }}"
+      dataset: commerceflow
+      location: "{{ env_var('GCP_LOCATION', 'EU') }}"
+      threads: 2
+      maximum_bytes_billed: 1000000000
+      job_execution_timeout_seconds: 300
+      job_retries: 1
