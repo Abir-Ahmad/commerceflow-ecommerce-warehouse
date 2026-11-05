@@ -20,6 +20,6 @@ export COMMERCEFLOW_DB="$PWD/data/airflow.duckdb"
 .airflow-venv/bin/python scripts/test_airflow.py
 ```
 
-To execute the full dataset, set `COMMERCEFLOW_INPUT="$PWD/data/olist"` before the final command. `dag.test()` executes operators and checks all three task states are `success`; it writes `target/airflow-test.json` and `target/airflow-reconciliation.json`. It does not start a webserver or scheduler. An actual full-data run passed here; see `docs/evidence/airflow.json`. GitHub Actions also has a separate fixture DAG job, pending hosted execution after publication.
+To execute the full dataset, set `COMMERCEFLOW_INPUT="$PWD/data/olist"` before the final command. `dag.test()` executes operators and checks all three task states are `success`; it writes `target/airflow-test.json` and `target/airflow-reconciliation.json`. It does not start a webserver or scheduler. An actual full-data run passed here; see `docs/evidence/airflow.json`. The separate `airflow-local` GitHub Actions job also passed on the synthetic fixture; see [run #1](https://github.com/Abir-Ahmad/commerceflow-ecommerce-warehouse/actions/runs/42029595045).
 
 Airflow is optional: the main local runner works without it. The minimal Docker image runs local dbt only; Airflow retains its separately tested Python environment. See `docs/docker.md` for container verification status.

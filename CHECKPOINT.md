@@ -1,22 +1,18 @@
-# CommerceFlow publishing checkpoint
+# CommerceFlow final checkpoint
 
 ## Completed
 
-- Original files inspected; original SQL recovered from Supply-Chain-Analytics commit `5b09ea52f4162811320446c097285b8b134e2a04`.
-- Tested local warehouse: eight sources/staging models, three dimensions, two facts, four marts; 48 dbt tests and seven independent reconciliations passed on the supplied dataset.
-- Synthetic regression checks, expected negative grain test, restored successful build and docs generation passed in a fresh locked environment.
-- Airflow 2.10.5 three-task DAG executed successfully on full data via `dag.test()`.
-- BigQuery config parsed; real cloud execution blocked by missing ADC/project. No billing enabled.
-- Public-ready source excludes all raw data, databases, Power BI files, credentials, caches and environments.
+- Public repository: https://github.com/Abir-Ahmad/commerceflow-ecommerce-warehouse
+- Verified source commit: `0826c8902f90e901e4d26d6ee9b1cf8856f3bffa`.
+- Successful hosted CI: https://github.com/Abir-Ahmad/commerceflow-ecommerce-warehouse/actions/runs/42029595045
+- Both `dbt-duckdb` and `airflow-local` passed. The dbt job built and ran the Docker image successfully with the synthetic fixture.
+- Original full-data local results preserved: 99,441 orders, 112,650 items, 17 models, 48 dbt tests, seven independent reconciliations and successful three-task Airflow `dag.test()`.
+- No raw data, credentials, databases, archives or caches published.
 
-## Remaining publication
+## Only cloud verification remains
 
-GitHub is authenticated as `Abir-Ahmad`. The current GitHub connector can write existing repositories, but exposes no create-repository operation. No new repository has been created, and no hosted Actions run has occurred. Browser fallback needs user approval before use.
+The BigQuery plugin is disabled by the workspace administrator. The Google Cloud Console/BigQuery Console show `Site Unavailable` in the cloud browser. The CLI OAuth secure account-choice attempt timed out; no ADC credentials were saved. A fresh Console retry was also unavailable. No BigQuery load, transformation, test or query ran, and no billing was enabled.
 
-1. Obtain approval to use GitHub in the browser to create public repository `commerceflow-ecommerce-warehouse` under `Abir-Ahmad`, with a README initial commit if needed by the upload path.
-2. Publish exactly this prepared source. Do not rebuild or add features.
-3. Wait for both `dbt-duckdb` and `airflow-local` jobs in `.github/workflows/ci.yml`.
-4. Inspect failures and make only required fixes. Record the final workflow URL, commit SHA and actual conclusions in README/verification. Never mark hosted CI successful from local evidence alone.
-5. Return the public repository and successful workflow URLs.
+Use `docs/bigquery.md` on a machine with a working Google Cloud Console and local browser-based ADC sign-in. Keep credentials on that machine; never paste private keys, OAuth codes or credentials into chat. Run the existing loader/build/tests and compare actual cloud outputs with the recorded local results before changing cloud status to verified.
 
-Cloud verification is a separate authenticated-machine checkpoint in `docs/bigquery.md`. The local fallback is complete; do not describe the project as deployed to BigQuery.
+Do not rebuild or extend the project. Docker, local implementation and GitHub publication/CI are complete. Final documentation commits may have newer SHAs; the linked run identifies the exact tested implementation.

@@ -11,6 +11,8 @@
 | Negative test | Duplicated fact item caused `unique_item_key` to fail as expected; table restored and complete build passed afterwards |
 | Clean environment | Installed `requirements.lock.txt` into a new Python 3.12 virtual environment; fixture build, exact-answer checks, negative test, restored build and `dbt docs generate` all passed |
 | Airflow 2.10.5 | `dag.test()` on the complete original dataset: `load_raw`, `dbt_build`, `reconcile` all success |
+| GitHub-hosted CI | Both `dbt-duckdb` and `airflow-local` passed in [run #1](https://github.com/Abir-Ahmad/commerceflow-ecommerce-warehouse/actions/runs/42029595045) for commit `0826c8902f90e901e4d26d6ee9b1cf8856f3bffa` |
+| Docker | Hosted `docker build` and `docker run --rm commerceflow:test` succeeded, including 17 models, 48 tests, seven reconciliations and fixture assertions |
 | BigQuery adapter | Installed 1.9.2; project/profile parsing passed |
 
 Full-data build command:
@@ -24,9 +26,14 @@ Clean validation uses exactly the README's fixture commands, including the expec
 ## Blocked or deliberately omitted
 
 - **BigQuery execution:** no ADC/project available. Read-only preflight exited 2. Even `dbt compile --no-introspect --no-populate-cache` attempted authentication and failed. No cloud data load, build, test or catalog generation succeeded. `dbt parse` is only configuration/graph validation.
-- **GitHub publication and hosted Actions:** authenticated account confirmed as `Abir-Ahmad`; the connected interface has no repository-creation operation. Repository does not yet exist. Workflow commands passed locally, but there is no hosted run URL or green hosted result to claim. Resume from `CHECKPOINT.md`.
 - **Airflow scheduler:** not deployed; the tested scope is real local operator execution using `dag.test()` and SQLite metadata, with a separate DuckDB warehouse.
-- **Docker:** no executable/daemon was available; no speculative Dockerfile was added.
+- **Docker scope:** verified on the GitHub-hosted runner with synthetic data, not on the full original dataset. There is no local Docker executable/daemon.
 - **Parquet:** omitted because the CSV batch source already works directly in both loader paths; no additional format was needed.
 
 An initial unpinned DuckDB 2.0.0 installation crashed during ingestion. The dependency was pinned to 1.3.2, the affected generated database was recreated, and the full run and fresh-environment validation succeeded. The failed run is not counted as a successful verification.
+
+## Final cloud retry
+
+The BigQuery plugin was discovered but is disabled by the workspace administrator. The Google Cloud Console and BigQuery Console both returned `Site Unavailable` in the cloud browser, including the final retry. A Google CLI OAuth account-choice prompt was attempted, but secure authorisation timed out; no ADC credentials were saved. No BigQuery jobs or resources were created and no billing was enabled. Exact user-machine setup and output comparisons are in `docs/bigquery.md`.
+
+Hosted CI emitted non-failing notices about Node.js action versions and the ubuntu-latest runner transition. These did not prevent either job, container execution or artifact upload from succeeding.

@@ -2,7 +2,9 @@
 
 A dbt Core dimensional warehouse built from my existing Olist delivery analytics project. It complements [GridFlow](https://github.com/Abir-Ahmad/gridflow-energy-pipeline) with dimensional modelling, tested SQL transformations and a small Apache Airflow workflow.
 
-**Verified:** DuckDB execution on the original 99,441 orders and 112,650 items; 17 dbt models, 48 passing data tests, seven independent CSV reconciliations, synthetic edge-case checks and an executed three-task Airflow DAG.
+**Verified locally:** DuckDB execution on the original 99,441 orders and 112,650 items; 17 dbt models, 48 passing data tests, seven independent CSV reconciliations, synthetic edge-case checks and an executed three-task Airflow DAG.
+
+**Verified on GitHub Actions:** both `dbt-duckdb` and `airflow-local` passed; the local-workflow Docker image was built and its fixture test executed successfully. [View the actual CI run](https://github.com/Abir-Ahmad/commerceflow-ecommerce-warehouse/actions/runs/42029595045).
 
 **Cloud status:** BigQuery adapter/profile and batch loader are provided, and `dbt parse --target bigquery` passed. BigQuery authentication and execution are **not verified**: no Application Default Credentials or GCP project were available. No billing was enabled. This is a working local project with a cloud deployment checkpoint, not a deployed BigQuery warehouse.
 
@@ -63,4 +65,4 @@ The calendar-date deadline differs from the original SQL's midnight timestamp co
 - [Three evidence-backed CV bullets](docs/cv_bullets.md)
 - [Full-data evidence](docs/evidence/full_data.json)
 
-GitHub Actions runs the synthetic fixture suite, a Docker image build and container test, and the Airflow DAG test. Hosted results are pending the initial project upload. Docker is unavailable in the authoring environment; its configuration will count as verified only after the hosted build/run succeeds. Parquet adds no necessary benefit for this small, directly loaded CSV snapshot.
+GitHub Actions passed the synthetic fixture suite, Docker image build and container test, and Airflow DAG test. Docker was verified on a GitHub-hosted runner; no local Docker daemon was available. The container test uses synthetic data; the original full dataset was verified separately on DuckDB and local Airflow. Parquet adds no necessary benefit for this small, directly loaded CSV snapshot.

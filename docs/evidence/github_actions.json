@@ -1,0 +1,25 @@
+{
+  "workflow_run_id": 42029595045,
+  "url": "https://github.com/Abir-Ahmad/commerceflow-ecommerce-warehouse/actions/runs/42029595045",
+  "commit_sha": "0826c8902f90e901e4d26d6ee9b1cf8856f3bffa",
+  "conclusion": "success",
+  "jobs": {
+    "dbt-duckdb": {
+      "job_id": 127252341603,
+      "conclusion": "success",
+      "docker_build_and_run": "success"
+    },
+    "airflow-local": {
+      "job_id": 127252341110,
+      "conclusion": "success"
+    }
+  },
+  "docker_log_evidence": [
+    "naming to docker.io/library/commerceflow:test done",
+    "Done. PASS=65 WARN=0 ERROR=0 SKIP=0 TOTAL=65",
+    "PASS: 7 independent CSV reconciliations; evidence: target/evidence.json",
+    "PASS: container smoke workflow completed."
+  ],
+  "data_scope": "Synthetic fixture on hosted runner; original full-data local evidence is separate.",
+  "cloud_execution": "Not performed; Console access unavailable and no ADC saved."
+}

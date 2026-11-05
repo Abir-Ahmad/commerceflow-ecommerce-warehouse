@@ -19,4 +19,4 @@ docker run --rm \
 
 The database and generated results live inside the temporary container and are discarded with `--rm`. For inspection, omit `--rm` and give the container a name. No cloud authentication is needed for either command.
 
-Verification status: Docker is absent in the authoring environment (no executable or daemon socket). A real build and execution are included in the existing `dbt-duckdb` GitHub Actions job; hosted outcome is pending. Merely adding this Dockerfile is not evidence that the image builds or runs.
+Verification status: **verified on a GitHub-hosted runner** in [run #1](https://github.com/Abir-Ahmad/commerceflow-ecommerce-warehouse/actions/runs/42029595045), commit `0826c8902f90e901e4d26d6ee9b1cf8856f3bffa`. The `Build and test local workflow container` step succeeded: the image was exported as `commerceflow:test`, the container built 17 dbt models, passed 48 tests and seven reconciliations, passed exact fixture assertions and exited successfully. Docker remains unavailable in the authoring environment. Full original-data execution inside Docker has not been tested; the verified container test uses the synthetic fixture.
